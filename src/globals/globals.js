@@ -1,0 +1,1 @@
+export const appTitle = 'Kine Movie App';

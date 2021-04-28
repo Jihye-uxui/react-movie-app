@@ -1,0 +1,31 @@
+// Header
+
+@use '../base/settings' as *;
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
+
+header {
+  background-color: $dark;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+
+  h1 {
+    @include flatten;
+    margin: 0 0 0 em(12, 32);
+    // line-height: 70px;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  // logo
+  img {
+    width: 100px;
+    margin-top: 1rem;
+  }
+}

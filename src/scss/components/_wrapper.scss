@@ -1,0 +1,11 @@
+// Wrapper
+
+@use '../base/settings' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.wrapper {
+    max-width: 700px;
+    background-color: $light;
+    @include mc();
+}

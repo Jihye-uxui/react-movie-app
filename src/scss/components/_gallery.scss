@@ -1,0 +1,21 @@
+// Gallery
+
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
+@use '../base/settings' as *;
+
+.gallery {
+  // Grid layout
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: em(10);
+
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  @media (min-width: em(600)) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

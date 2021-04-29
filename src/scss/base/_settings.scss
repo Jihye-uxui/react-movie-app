@@ -3,15 +3,20 @@
 @use '../utilities/functions' as *;
 
 // Colors
-$dark: #1c1c1c;
-$light: #fcfcfc;
+$dark: #040206;
+$light: #ebebeb;
+$green: #2fe2d8;
+$violet: #795edd;
+$darkViolet: #110a21;
+//
 $yellow: #f7df1c;
 $grey: #e1e1e1;
 $red: #d75b5b;
 
 // Type
-$bodyFont: "Roboto", sans-serif;
-$headingFont: "Alatsi", sans-serif;
+$bodyFont: "Montserrat", sans-serif;
+//
+$headingFont: "Montserrat", sans-serif;
 
 // Layout
-$section-padding: em(16) em(20);
+$section-padding: em(5) em(5);

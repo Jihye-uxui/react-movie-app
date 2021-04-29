@@ -1,25 +1,33 @@
-// Gallery
+// Home Page Gallery
+// Movie list - Popular, Top Rated..
 
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
 @use '../base/settings' as *;
 
-// .gallery {
-//   // Grid layout
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   gap: em(10);
+.gallery {
+  // Grid layout
+  display: grid;
+  // grid-template-columns: 1fr;
+  gap: em(10);
 
-//   img {
-//     width: 100%;
-//     display: block;
-//   }
+  img {
+    width: 100%;
+    display: block;
+  }
 
-//   @media (min-width: em(600)) {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }
+  // Tablet device
+  @media (min-width: em(600)) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
-.movie-list {
-  width: auto;
+  // Desktop device
+  @media (min-width: em(900)) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+nav {
+  padding: 0;
+  margin: 0;
 }

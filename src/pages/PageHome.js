@@ -1,13 +1,24 @@
 // Page - Home
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { appTitle, endPointPopular, posterPath, apiKey } from '../globals/globals';
+import { appTitle, endPointPopular, posterPath, imageFolderPath } from '../globals/globals';
+
+import useGlobal from '../store/globalAppState';
+import Movie from '../components/Movie';
+import isFav from '../utilities/isFav';
+
 
 // SCSS style file
 import '../scss/components/_movie-list.scss';
 
 // Fetch movie lists
 const PageHome = () => {
+
+    // local storage
+	const globalStateAndglobalActions = useGlobal();
+    const globalState = globalStateAndglobalActions[0];
+
+    // useState
     const [movies, setMovies] = useState(null);
 
     useEffect(() => {
@@ -25,41 +36,33 @@ const PageHome = () => {
     
     }, []);
 
-
+    // Navigation function bar
     function blur(e){
         e.target.blur();
     }
 
+
     return (
         <main>
             <section>
-            <nav className="main-nav" onClick={blur}>
-                <ul>
-                    <li><NavLink to="/" exact>Popular</NavLink></li>
-                    <li><NavLink to="/favourites">Top Rated</NavLink></li>
-                    <li><NavLink to="/about">Upcoming</NavLink></li>
-                    <li><NavLink to="/about">Now Playing</NavLink></li>
-
-                </ul>
-            </nav>
-
                 <h2>Poplular Now</h2>
-                <div className="gallery">
-
                     {movies !== null &&
-                    <div name="movie-list">
+                    <div className="gallery">
                         {movies.map(movie => 
                         <div key={movie.id}>
+                            {isFav && 
+                            <div className="heart">
+                                <img src={`${imageFolderPath}heart-unfilled.png`} alt="Heart"/>
+                            </div>}
                             <img src={posterPath + movie.poster_path} alt={movie.title}/>
                             <p>{movie.vote_average}</p>
-                            <p>{movie.release_date}</p>
                             <h3>{movie.title}</h3>
+                            <p>{movie.release_date}</p>
                             <p>{movie.overview}</p>
                         </div>)}
                     </div>}
 
                     {/* <Link to="movie1" className="movie-poster"><img src={poster01} alt="Movie 1"/></Link>*/}
-                </div>
             </section>
         </main>
     )

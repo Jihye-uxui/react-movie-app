@@ -19,3 +19,5 @@ const PageFavourites = () => {
 };
 
 export default PageFavourites;
+
+

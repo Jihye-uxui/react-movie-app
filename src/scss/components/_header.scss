@@ -1,6 +1,6 @@
 // Header
 
-@use '../base/settings' as *;
+@use '../base/variables' as *;
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
 
@@ -18,7 +18,6 @@ header {
     margin: 0 0 0 em(12, 32);
     // line-height: 70px;
     a {
-      text-decoration: none;
       color: white;
     }
   }

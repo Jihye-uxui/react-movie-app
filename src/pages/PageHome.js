@@ -1,72 +1,38 @@
-// Page - Home
-import { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { appTitle, endPointPopular, posterPath, imageFolderPath } from '../globals/globals';
+import { useEffect, useState } from 'react';
+import NavSort from '../components/NavSort';
+import Movies from '../components/Movies';
+import {API_TOKEN} from '../globals/globals';
 
-import useGlobal from '../store/globalAppState';
-import Movie from '../components/Movie';
-import isFav from '../utilities/isFav';
+function PageHome({ sort }) {
 
-
-// SCSS style file
-import '../scss/components/_movie-list.scss';
-
-// Fetch movie lists
-const PageHome = () => {
-
-    // local storage
-	const globalStateAndglobalActions = useGlobal();
-    const globalState = globalStateAndglobalActions[0];
-
-    // useState
-    const [movies, setMovies] = useState(null);
+    const [moviesData, setMoviesData] = useState(null);
 
     useEffect(() => {
-		document.title = `${appTitle} - Home`;
-
-        // Asyncronous requests
-        const fetchMovies = async() => {
-            const res = await fetch(endPointPopular);
-            let data = await res.json();
-
-            console.log(data.results);
-            setMovies(data.results);
+        const fetchMovies = async () => {
+            const res = await fetch(`https://api.themoviedb.org/3/movie/${sort}?language=en-US&page=1`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + API_TOKEN
+                }
+            });
+            const moviesData = await res.json();
+            // Show 12 movies from array of 20 movies...
+            const first12Movies = moviesData.results.splice(0, 12);
+            setMoviesData(first12Movies);
         }
-        fetchMovies();
     
-    }, []);
+        fetchMovies();
 
-    // Navigation function bar
-    function blur(e){
-        e.target.blur();
-    }
-
+    }, [sort]);
 
     return (
-        <main>
-            <section>
-                <h2>Poplular Now</h2>
-                    {movies !== null &&
-                    <div className="gallery">
-                        {movies.map(movie => 
-                        <div key={movie.id}>
-                            {isFav && 
-                            <div className="heart">
-                                <img src={`${imageFolderPath}heart-unfilled.png`} alt="Heart"/>
-                            </div>}
-                            <img src={posterPath + movie.poster_path} alt={movie.title}/>
-                            <p>{movie.vote_average}</p>
-                            <h3>{movie.title}</h3>
-                            <p>{movie.release_date}</p>
-                            <p>{movie.overview}</p>
-                        </div>)}
-                    </div>}
-
-                    {/* <Link to="movie1" className="movie-poster"><img src={poster01} alt="Movie 1"/></Link>*/}
-            </section>
-        </main>
+        <section className="home-page">
+            <NavSort />
+            {/* Request loading bar / error messages here... */}
+            {moviesData !== null && <Movies moviesData={moviesData}/>}
+        </section>
     )
-
-};
+}
 
 export default PageHome;

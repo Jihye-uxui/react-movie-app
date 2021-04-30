@@ -1,7 +1,14 @@
 // About Page specification
 
-@use '../base/settings' as *;
+@use '../base/variables' as *;
 
+section {
+  color: $light;
+  width: 100%;
+  h2 {
+    color: $green;
+  }
+}
 section img {
   width: 5rem;
 }

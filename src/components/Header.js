@@ -2,7 +2,7 @@
 
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
+import NavMain from './NavMain';
 import { appTitle } from '../globals/globals';
 
 // import logo image
@@ -48,7 +48,7 @@ const Header = () => {
                 </span>
                 <span className="sr-only">Menu</span>
             </button>
-            <Nav handleShowHideNav={showHideNav}/>
+            <NavMain handleShowHideNav={showHideNav}/>
         </header>
     );
 }

@@ -5,7 +5,9 @@ import globalHook from 'use-global-hook';
 import { appStorageName } from '../globals/globals';
 
 function getFavs(){
+
     let favsFromStorage = localStorage.getItem(appStorageName);
+    
     if(favsFromStorage === null){
         favsFromStorage = [];
     }else{
@@ -18,14 +20,14 @@ const actions = {
     addFav: (store, movieObj) => {
 
         const newFavs = [...store.state.favs, movieObj];
-
         const newFavsForStorage = JSON.stringify(newFavs);
         
         localStorage.setItem(appStorageName, newFavsForStorage);
-        
         store.setState({ favs: newFavs });
 
+        // console.log(`new Favs : ${newFavs}`);
     },
+    
     removeFav: (store, id) => {
 
         // Make a copy to avoid modify state directly.
@@ -38,7 +40,8 @@ const actions = {
         localStorage.setItem(appStorageName, favsForStorage);
         
         store.setState({ favs: currentFavs });
-
+        
+        // console.log(`current favs : ${currentFavs}`);
     }
 }
 

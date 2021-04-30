@@ -1,14 +1,13 @@
 // Home Page Gallery
 // Movie list - Popular, Top Rated..
 
+@use '../base/variables' as *;
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
-@use '../base/settings' as *;
 
-.gallery {
-  // Grid layout
+.movies-container {
   display: grid;
-  // grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
   gap: em(10);
 
   img {
@@ -16,18 +15,15 @@
     display: block;
   }
 
-  // Tablet device
-  @media (min-width: em(600)) {
+  @include mq($tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq($desktop) {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  // Desktop device
-  @media (min-width: em(900)) {
+  @include mq($desktopWide) {
     grid-template-columns: repeat(6, 1fr);
   }
-}
-
-nav {
-  padding: 0;
-  margin: 0;
 }

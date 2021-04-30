@@ -1,0 +1,43 @@
+@use '../base/variables' as *;
+@use '../utilities/functions' as *;
+
+.nav-sort {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+  }
+  li {
+    padding: em(5);
+    margin-bottom: em(10);
+    // flex: 1;
+    margin-right: 0 em(4);
+    width: em(200);
+
+    // border: 1px solid rgba($green, 0.4);
+    // border-radius: 0 0 10px 10px;
+    // background-color: $violet;
+
+    &:last-child {
+      margin-right: none;
+    }
+  }
+
+  a {
+    display: block;
+    text-align: center;
+    line-height: em(40);
+    color: $light;
+    font-weight: 500;
+    font-size: em(18);
+    border-bottom: 3px solid $dark;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: rgba($green, 0.9);
+      border-bottom: 3px solid $green;
+    }
+  }
+}

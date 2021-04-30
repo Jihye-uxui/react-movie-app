@@ -1,0 +1,17 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.btn-more-info {
+  border: 1px solid $green;
+  border-radius: em(5);
+  width: em(100);
+  height: em(30);
+  text-align: center;
+
+  a {
+    color: $green;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}

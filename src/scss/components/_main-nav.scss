@@ -1,6 +1,6 @@
 // Main Nav
 
-@use '../base/settings' as *;
+@use '../base/variables' as *;
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
 
@@ -10,7 +10,6 @@
   height: 0;
   overflow: hidden;
   visibility: hidden;
-  transition: height 0.5s ease, visibility 0s 0.5s;
 
   .show & {
     transition: height 0.5s ease, visibility 0s;
@@ -26,6 +25,7 @@
   ul {
     @include flatten($is-list: true);
   }
+
   a {
     color: $light;
     text-decoration: none;
@@ -41,13 +41,19 @@
     &:focus,
     &:active {
       background-color: rgba(white, 0.2);
+      transition: height 0.5s ease, visibility 0s 0.5s;
     }
   }
 
-  @media (min-width: em(600)) {
+  // @include mq($tablet) {
+  //   width: 200px;
+  //   background-color: red;
+  // }
+
+  @include mq($tablet) {
     height: auto;
+    width: 50%;
     visibility: visible;
-    transition: none;
 
     .show & {
       transition: none;
@@ -56,10 +62,9 @@
 
     ul {
       display: flex;
-    }
-
-    li {
-      flex: 1;
+      li {
+        flex: 1;
+      }
     }
 
     a {
@@ -68,7 +73,7 @@
       border-top: none;
       @at-root .main-nav li:not(:first-child) a {
         border-top: none;
-        border-left: 3px solid $grey;
+        // border-left: 3px solid $grey;
       }
     }
   }

@@ -1,18 +1,18 @@
-// Is Fav
+//Is Fav
 
 function isFav(arr, path, id){
 
     // If we are on the favs page...then no 
-    // need to check for favs as all the kittens
+    // need to check for favs as all the movies
     // on this page are favourited...
     if(path === '/favs'){
         return true;
     }
   
-    // If there are no favourited kittens...
-    // then no need to check if the kitten has
+    // If there are no favourited movies...
+    // then no need to check if the movie has
     // been favourited...
-    if(arr.length === 0){
+    if(arr.length === 0 ){
       return false;
     }
   

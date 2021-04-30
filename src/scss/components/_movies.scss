@@ -1,0 +1,19 @@
+// Movies container
+
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+
+.movie-card {
+  border: em(3) solid $light;
+  padding: em(10);
+  margin-bottom: em(16);
+  border-radius: em(8);
+  color: $light;
+  background-color: $dark;
+  border: 1px solid rgba($green, 0.4);
+  border-radius: 0 0 10px 10px;
+
+  @include mq($tablet) {
+    margin-bottom: 0;
+  }
+}

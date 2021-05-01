@@ -1,0 +1,61 @@
+// Movies container
+
+@use '../utilities/functions' as *;
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+
+.movie-card {
+  color: $light;
+  background-color: $dark;
+  border: 1px solid rgba($green, 0.4);
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  height: auto;
+
+  // for overlay effect
+  position: relative;
+
+  // Poster image
+  .movie-poster {
+    width: 100%;
+  }
+
+  // Bsic movie info
+  // movie title, release data, avg rate
+  .movie-info {
+    padding: em(10);
+    width: 100%;
+  }
+
+  @include mq($tablet) {
+    margin-bottom: 0;
+    display: block;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .movie-info-overlay {
+    @include mq($tablet) {
+      background-color: rgba($darkViolet, 0.9);
+      margin: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      transition: 0.6s ease-in-out;
+      height: em(310);
+      opacity: 0;
+      padding: 0;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    p {
+      font-size: em(14);
+      @include mq($tablet) {
+        font-size: em(16);
+        padding: 2rem;
+      }
+    }
+  }
+}

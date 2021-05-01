@@ -6,7 +6,11 @@
 
 .fav-icon {
   width: em(30);
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   float: right;
   margin: em(5);
+  cursor: pointer;
+  z-index: 2;
 }

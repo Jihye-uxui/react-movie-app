@@ -3,15 +3,25 @@
 @use '../utilities/functions' as *;
 
 .btn-more-info {
+  margin: 0 auto;
   border: 1px solid $green;
   border-radius: em(5);
-  width: em(100);
-  height: em(30);
+  padding: em(8);
+  width: em(160);
   text-align: center;
 
   a {
     color: $green;
-    font-weight: 500;
-    text-transform: capitalize;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+  &:hover {
+    background-color: $green;
+    transition: 0.6s ease-in-out;
+    a {
+      color: $dark;
+    }
   }
 }

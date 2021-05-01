@@ -20,25 +20,6 @@ function MovieCard({movie, movieObj, profileLink, isFav}) {
 
     return (
         <div className="movie-card">
-            <div className="movie-poster">
-                {movie.poster_path === null ?
-                <img src={noPoster} alt="no poster"/> :
-                <img src={posterPath + movie.poster_path} alt={movie.title}/>}
-            </div>
-            <div className="movie-info">
-                <p>{movie.vote_average}</p>
-                <h3>{movie.title}</h3>
-                <p>{movie.release_date}</p>
-                {/* <p>{movie.overview}</p> */}
-            </div>
-            {/* More Movie Info */}
-            {profileLink && 
-            <div className="btn-more-info">
-                <Link to={{pathname: `/movie/${movie.id}`,
-                            state: { movieObj }}}>
-                    More Info
-                </Link>
-            </div>}
             {/* Add to Favs */}
             <div className="btn-favourite">
                 {isFav ? 
@@ -46,6 +27,32 @@ function MovieCard({movie, movieObj, profileLink, isFav}) {
                     <FavButton movieObj={movieObj} handleFavClick={handleFavClick} />
                 }
             </div>
+            <div className="movie-poster">
+                {movie.poster_path === null ?
+                <img src={noPoster} alt="no poster"/> :
+                <img src={posterPath + movie.poster_path} alt={movie.title}/>}
+            </div>
+
+            <div className="movie-info">
+                <h3>{movie.title}</h3>
+                <p>{movie.release_date}</p>
+                <p>{movie.vote_average}</p>
+            </div>
+
+            <div className="movie-info-overlay">
+                    <p className="text">{(movie.overview).substring(0, 100)}...</p>
+
+                {/* More Movie Info */}
+                {profileLink && 
+                    <div className="btn-more-info">
+                        <Link to={{pathname: `/movie/${movie.id}`,
+                                    state: { movieObj }}}>
+                            More Info
+                        </Link>
+                    </div>}
+
+            </div>
+
         </div>
     )
 }

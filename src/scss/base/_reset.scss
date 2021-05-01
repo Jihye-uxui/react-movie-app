@@ -11,6 +11,8 @@ html {
 
 body {
   margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 img {
@@ -25,4 +27,5 @@ table {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }

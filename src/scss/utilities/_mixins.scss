@@ -1,5 +1,5 @@
 // Mixins
-
+@use '../base/variables' as *;
 @use '../utilities/functions' as *;
 
 // Margin center...
@@ -28,6 +28,11 @@
   @if ($is-text) {
     line-height: 1;
   }
+}
+
+// movie card, text content sections border
+@mixin border {
+  border: 1px solid rgba($green, 0.4);
 }
 
 // Media Queries

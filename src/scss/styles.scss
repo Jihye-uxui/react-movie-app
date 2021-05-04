@@ -21,10 +21,10 @@
 @use './components/btn-main-nav';
 @use './components/btn-favs';
 @use './components/btn-more-info';
-
 // _fav-button.scss
 
 // Pages
+@use './components/page-favs';
 @use './components/page-about';
 
 // Utilities

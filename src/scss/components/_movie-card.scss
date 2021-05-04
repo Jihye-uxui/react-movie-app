@@ -1,5 +1,4 @@
 // Movies container
-
 @use '../utilities/functions' as *;
 @use '../base/variables' as *;
 @use '../utilities/mixins' as *;
@@ -35,7 +34,7 @@
 
   .movie-info-overlay {
     @include mq($tablet) {
-      background-color: rgba($darkViolet, 0.9);
+      background-color: rgba($dark, 0.9);
       margin: 0;
       position: absolute;
       top: 0;

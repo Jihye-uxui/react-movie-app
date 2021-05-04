@@ -1,0 +1,31 @@
+// Favourites Page specification
+
+@use '../base/variables' as *;
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
+
+.favs-section {
+  display: flex;
+  justify-content: center;
+  //   align-items: flex-end;
+
+  .empty-favs {
+    text-align: center;
+    align-items: center;
+    margin: 6rem 0;
+
+    h2 {
+      color: $green;
+    }
+    p {
+      color: $light;
+      padding: 0.5rem;
+    }
+
+    .fav-icon {
+      width: em(20);
+      position: relative;
+      margin: 5px 0 0 5px;
+    }
+  }
+}

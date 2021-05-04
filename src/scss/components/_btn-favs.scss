@@ -10,7 +10,13 @@
   top: 0;
   right: 0;
   float: right;
-  margin: em(5);
+  margin: em(10);
   cursor: pointer;
   z-index: 2;
+
+  @include mq($tablet) {
+    position: absolute;
+    bottom: 0;
+    top: auto;
+  }
 }

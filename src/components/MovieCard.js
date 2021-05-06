@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import { posterPath, imageFolderPath } from '../globals/globals';
+import { posterPath, STAR_SVG } from '../globals/globals';
 import noPoster from '../images/no-movie-poster.jpg';
 import FavButton from '../components/FavButton';
 import useGlobal from '../store/globalAppState';
-
 
 function MovieCard({movie, movieObj, profileLink, isFav}) {
 
@@ -43,7 +42,7 @@ function MovieCard({movie, movieObj, profileLink, isFav}) {
                     <p className="text">{(movie.overview).substring(0, 100)}...</p>
 
                 {/* More Movie Info */}
-                {profileLink && 
+                {profileLink &&
                     <div className="btn-more-info">
                         <Link to={{pathname: `/movie/${movie.id}`,
                                     state: { movieObj }}}>

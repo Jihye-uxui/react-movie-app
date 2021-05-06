@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import { appTitle } from '../globals/globals';
 import useGlobal from '../store/globalAppState';
 import FavMovies from '../components/FavMovies';
-
+import { imageFolderPath } from '../globals/globals';
+import '../scss/components/_page-favs.scss';
+import '../scss/components/_btn-favs.scss';
 
 function PageFavs() {
 
@@ -22,19 +24,21 @@ function PageFavs() {
     const favMoviesData = globalState.favs;
 
     return (
-        <main>
-			<section>
-                <h2>Favourites</h2>
-                {favMoviesData.length < 1 ? 
-                <div className="empty-favs">
-                    <h3>No Favourite movie list yet!</h3>
-                    <p>Create your favorite movie list by clicking the "heart" button on each movie. <Link to="/">home</Link></p>
-                </div> : 
-                <div className="movies-grid">
-                    <FavMovies/>
-                </div>}
-            </section>
-		</main>
+        <div className="wrapper">
+            <h1>Favourites</h1>
+            <main>
+                <section class="favs-section">
+                    {favMoviesData.length < 1 ? 
+                    <div className="empty-favs">
+                        <h2>No Favourite movie yet!</h2>
+                        <p>Create your favorite movie list by clicking <img class="fav-icon" src={`${imageFolderPath}heart-filled.png`} alt="Add to favourites"/></p><br/><Link to="/">Back to Movies</Link>
+                    </div> : 
+                    <div className="movies-grid">
+                        <FavMovies/>
+                    </div>}
+                </section>
+            </main>
+        </div>
     );
 	
 }

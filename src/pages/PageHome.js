@@ -27,11 +27,13 @@ function PageHome({ sort }) {
     }, [sort]);
 
     return (
-        <section className="home-page">
-            <NavSort />
-            {/* Request loading bar / error messages here... */}
-            {moviesData !== null && <Movies moviesData={moviesData}/>}
-        </section>
+        <div class="wrapper">
+            <section className="home-page">
+                <NavSort />
+                {/* Request loading bar / error messages here... */}
+                {moviesData !== null && <Movies moviesData={moviesData}/>}
+            </section>
+        </div>
     )
 }
 

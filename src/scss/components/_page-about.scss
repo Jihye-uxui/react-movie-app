@@ -1,14 +1,54 @@
 // About Page specification
 
 @use '../base/variables' as *;
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
 
-section {
+h1 {
   color: $light;
-  width: 100%;
-  h2 {
-    color: $green;
+}
+
+.about-main {
+  @include border;
+  background-color: $dark;
+  margin-top: 3rem;
+  border-radius: 10px;
+
+  section {
+    color: $light;
+    width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+
+    h2 {
+      color: $green;
+      text-align: center;
+      padding: em(20) 0;
+    }
+
+    p {
+      margin: 0 auto;
+    }
+    .highlight {
+      color: $green;
+      display: inline;
+    }
+  }
+
+  @include mq($desktop) {
+    display: flex;
+    p {
+      width: 80%;
+    }
   }
 }
-section img {
-  width: 5rem;
+
+.tmdb-logo {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  img {
+    width: 5rem;
+  }
 }

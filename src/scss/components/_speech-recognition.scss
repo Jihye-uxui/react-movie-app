@@ -1,0 +1,15 @@
+// Speech Recognition Search Function
+@use '../utilities/functions' as *;
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+
+.speech-container {
+  h2,
+  p,
+  span {
+    color: $light;
+  }
+  button {
+    border: none;
+  }
+}

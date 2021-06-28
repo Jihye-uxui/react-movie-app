@@ -1,0 +1,14 @@
+// Svg Star Icon
+@use '../utilities/functions' as *;
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+
+.movie-rate {
+  svg {
+    fill: $yellow;
+    height: 1.2rem;
+    margin-left: -5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+  }
+}

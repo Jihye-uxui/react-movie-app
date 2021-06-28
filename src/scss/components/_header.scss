@@ -5,26 +5,42 @@
 @use '../utilities/mixins' as *;
 
 header {
-  background-color: $dark;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  height: auto;
 
-  h1 {
-    @include flatten;
-    margin: 0 0 0 em(12, 32);
-    // line-height: 70px;
-    a {
-      color: white;
+  // sticky nav
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: $darkViolet;
+
+  // logo
+  .logo {
+    display: none;
+    width: 5rem;
+  }
+
+  @include mq($tablet) {
+    height: 80px;
+    padding: 0 2rem;
+    top: 0;
+    bottom: auto;
+    background-color: $dark;
+
+    .logo {
+      display: flex;
+      width: 6rem;
+      margin-top: 5px;
     }
   }
 
-  // logo
-  img {
-    width: 100px;
-    margin-top: 1rem;
+  @include mq($desktop) {
+    padding: 0 5rem;
   }
 }

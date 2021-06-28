@@ -1,18 +1,17 @@
-// Execute movie contents from database
 import useGlobal from '../store/globalAppState';
-import MovieCard from './MovieCard';
-import isFav from '../utilities/isFav';
 import '../scss/components/_movies-container.scss';
+import isFav from '../utilities/isFav';
+import MovieHero from '../components/MovieHero';
 
 
-function Movies({moviesData}) {
+function HomeHero({moviesData}) {
 
     const globalStateAndglobalActions = useGlobal();
     const globalState = globalStateAndglobalActions[0];
 
     return (
-        <div className="movies-container">
-            {moviesData.map((movie, i) => <MovieCard key={i} 
+        <div className="movie-container">
+            {moviesData.map((movie, i) => <MovieHero key={i} 
                                                 movieObj={movie} 
                                                 movie={movie}
                                                 isFav={isFav(globalState.favs, null, movie.id)}/>)}
@@ -21,4 +20,4 @@ function Movies({moviesData}) {
 }
 
 
-export default Movies;
+export default HomeHero;

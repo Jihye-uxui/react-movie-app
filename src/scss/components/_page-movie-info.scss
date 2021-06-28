@@ -1,0 +1,126 @@
+// Movie Individual Page
+@use '../base/variables' as *;
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
+
+.movie-info-page {
+  @include mq($desktop) {
+    display: inline-flex;
+  }
+}
+
+.movie-info-detail {
+  img {
+    display: flex;
+    object-fit: cover;
+  }
+
+  @include mq($tablet) {
+    display: flex;
+  }
+
+  .movie-poster {
+    margin: 0 auto;
+
+    img {
+      padding: 1rem;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    @include mq($tablet) {
+      img {
+        width: 100%;
+      }
+    }
+
+    @include mq($desktop) {
+      display: flex;
+      width: 100%;
+      img {
+        width: auto;
+        height: 75vh;
+      }
+    }
+  }
+
+  .movie-information {
+    position: relative;
+
+    @include border;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+
+    h1 {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      color: $green;
+    }
+
+    h3 {
+      color: $green;
+      padding: 0.5rem 0;
+    }
+
+    p {
+      color: $light;
+    }
+
+    .movie-tagline {
+      text-align: center;
+      color: grey;
+      font-style: italic;
+      padding: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    .movie-details {
+      color: $light;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .movie-genres {
+      display: inline-block;
+      padding-right: 1rem;
+    }
+
+    @include mq($tablet) {
+      width: 100%;
+      .overview-genre {
+        padding: 0 1rem;
+        h3 {
+          padding-top: 1.5rem;
+        }
+      }
+
+      h1 {
+        font-size: 2rem;
+        padding: 1rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      .movie-details {
+        font-size: 1.2rem;
+      }
+
+      .movie-tagline {
+        padding: 1.5rem;
+      }
+    }
+  }
+}
+
+#detail-fav {
+  @include mq($tablet) {
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+    float: right;
+  }
+}

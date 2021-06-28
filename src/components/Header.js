@@ -1,9 +1,12 @@
 // Header
-
 import {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import NavMain from './NavMain';
-import { appTitle } from '../globals/globals';
+import SvgSearch from '../icons/SvgSearch';
+import SvgAbout from '../icons/SvgAbout';
+import SvgHeart from '../icons/SvgHeart';
+import SvgHome from '../icons/SvgHome';
+
 
 // import logo image
 import logo from '../images/kinemovie-logo.png';
@@ -20,8 +23,8 @@ const Header = () => {
 
     useEffect(() => {
         // Media query
-        // When the width is over 600px, close the mobile nav bar
-        let mq = window.matchMedia('(min-width: 600px)');
+        // When the width is over 680px, close the mobile nav bar
+        let mq = window.matchMedia('(min-width: 680px)');
         mq.addListener(isDesktop);
         return () => mq.removeListener(isDesktop);
     }, [])
@@ -31,25 +34,21 @@ const Header = () => {
     }
 
     return (
-        <header className={navOpen ? 'show' :undefined}>
-            <h1><Link to="/"><img src={logo} alt="Kine Movie Logo"/></Link></h1>
-            {/**
-             * HTML for the Hamburger icon modified from HTMl 
-             * found at this codepen:
-             * https://codepen.io/RRoberts/pen/ZBYaJr
-             */}
-            <button className="btn-main-nav"
-                    onMouseDown={(e) => {e.preventDefault(); }}
-                    onClick={showHideNav}>
-                <span className="hamburger-icon">
-                    <span className="line"></span>
-                    <span className="line"></span>
-                    <span className="line"></span>
-                </span>
-                <span className="sr-only">Menu</span>
-            </button>
-            <NavMain handleShowHideNav={showHideNav}/>
-        </header>
+        <div className="wrapper">
+            <header className={navOpen ? 'show' :undefined}>
+                <Link to="/"><img className="logo" src={logo} alt="Kine Movie Logo"/></Link>
+
+                <ul className="btn-main-nav">
+                    <li><NavLink to="/" exact><SvgHome /></NavLink></li>
+                    <li><NavLink to="/favourites"><SvgHeart /></NavLink></li>
+                    <li><NavLink to="/about"><SvgAbout /></NavLink></li>
+                    <li><NavLink to="/search"><SvgSearch /></NavLink></li>
+                    <span className="sr-only">Menu</span>
+                </ul>
+
+                <NavMain handleShowHideNav={showHideNav}/>
+            </header>
+        </div>
     );
 }
 

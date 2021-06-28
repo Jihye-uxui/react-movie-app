@@ -1,5 +1,4 @@
 // Global App State
-
 import React from 'react';
 import globalHook from 'use-global-hook';
 import { appStorageName } from '../globals/globals';
@@ -24,8 +23,6 @@ const actions = {
         
         localStorage.setItem(appStorageName, newFavsForStorage);
         store.setState({ favs: newFavs });
-
-        // console.log(`new Favs : ${newFavs}`);
     },
     
     removeFav: (store, id) => {
@@ -39,9 +36,7 @@ const actions = {
         let favsForStorage = JSON.stringify(currentFavs);
         localStorage.setItem(appStorageName, favsForStorage);
         
-        store.setState({ favs: currentFavs });
-        
-        // console.log(`current favs : ${currentFavs}`);
+        store.setState({ favs: currentFavs });        
     }
 }
 

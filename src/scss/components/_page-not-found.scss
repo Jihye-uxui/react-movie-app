@@ -1,13 +1,13 @@
-// Favourites Page specification
+// 404 Page Not Found
 @use '../base/variables' as *;
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
 
-.favs-section {
+.error-section {
   display: flex;
   justify-content: center;
 
-  .empty-favs {
+  .error-message {
     text-align: center;
     align-items: center;
     margin: 6rem 0;

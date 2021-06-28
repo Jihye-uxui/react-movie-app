@@ -10,19 +10,19 @@ import Movies from '../components/Movies';
 import PageHome from '../pages/PageHome';
 import PageAbout from '../pages/PageAbout';
 import PageFavs from '../pages/PageFavs';
+import PageSearch from '../pages/PageSearch';
 
 // 404 Page Not Found Page
 import PageNotFound from '../pages/PageNotFound';
 
-// Home page Gallery section
+// Movie detail information section
 import PageMovieInfo from '../pages/PageMovieInfo';
 import { APP_FOLDER_NAME } from '../globals/globals';
 
 
 function AppRouter() {
   return (
-    <Router basename={APP_FOLDER_NAME}>
-        <div className="wrapper">
+    <Router basename={ APP_FOLDER_NAME }>
         <Header/>
           <main>
             <Switch>
@@ -32,14 +32,14 @@ function AppRouter() {
               <Route path='/sort/top-rated'><PageHome sort='top_rated' /></Route>
               <Route path='/sort/now-playing'><PageHome sort='now_playing' /></Route>
               <Route path='/sort/upcoming'><PageHome sort='upcoming' /></Route>
-
-              <Route path='/favs'><PageFavs/></Route>
+              <Route path='/favourites'><PageFavs/></Route>
               <Route path='/about'><PageAbout/></Route>
+              <Route path='/search'><PageSearch/></Route>
+              <Route path='/'><PageNotFound/></Route>
 
             </Switch>
           </main>
         <Footer/>
-        </div>
     </Router>
   );
 }

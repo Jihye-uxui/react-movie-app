@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { posterPath, STAR_SVG } from '../globals/globals';
+import { posterPath } from '../globals/globals';
 import noPoster from '../images/no-movie-poster.jpg';
 import FavButton from '../components/FavButton';
 import useGlobal from '../store/globalAppState';
+import SvgStar from '../icons/SvgStar';
 
 function MovieCard({movie, movieObj, profileLink, isFav}) {
 
@@ -33,25 +34,26 @@ function MovieCard({movie, movieObj, profileLink, isFav}) {
             </div>
 
             <div className="movie-info">
+            {(movie.title).length > 40 ?
+                <h3>{(movie.title).substring(0, 40)}...</h3> :
                 <h3>{movie.title}</h3>
+            }
                 <p>{movie.release_date}</p>
-                <p>{movie.vote_average}</p>
+                <p class="movie-rate"><SvgStar/>{movie.vote_average}</p>
             </div>
 
             <div className="movie-info-overlay">
-                    <p className="text">{(movie.overview).substring(0, 100)}...</p>
+                <p className="movie-overview">{(movie.overview).substring(0, 120)}...</p>
 
                 {/* More Movie Info */}
                 {profileLink &&
-                    <div className="btn-more-info">
-                        <Link to={{pathname: `/movie/${movie.id}`,
-                                    state: { movieObj }}}>
-                            More Info
-                        </Link>
-                    </div>}
-
+                <div className="btn-more-info">
+                    <Link to={{pathname: `/movie/${movie.id}`,
+                                state: { movieObj }}}>
+                        More Info
+                    </Link>
+                </div>}
             </div>
-
         </div>
     )
 }

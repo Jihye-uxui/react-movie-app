@@ -1,5 +1,4 @@
 // Footer
-
 import { getYear } from '../utilities/utilities';
 import '../scss/components/_footer.scss';
 

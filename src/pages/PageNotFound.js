@@ -1,5 +1,4 @@
 // Page - Not Found
-
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { appTitle } from '../globals/globals';
@@ -11,13 +10,16 @@ const PageNotFound = () => {
 	}, []);
     
 	return (
-		<section className="page-not-found-section">
-			<h2>404 ... : (</h2>
-			<p>Page not found.</p>
-			<p>Go to <Link to="/">Home</Link> page.</p>
-		</section>
+		<div className="wrapper">
+			<h1 className="page-heading">404 Error</h1>
+			<section className="error-section">
+				<div className="error-message">
+					<h2>Oops! Page Not Found</h2>
+					<p>The page you were looking for doesn't exsit. It might have been removed, renamed. Please try it again!<br/><br/><Link to="/">Back to Home</Link></p>
+				</div>
+			</section>
+		</div>
 	);
-	
 };
 
 export default PageNotFound;

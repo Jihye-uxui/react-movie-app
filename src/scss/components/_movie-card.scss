@@ -7,54 +7,79 @@
   color: $light;
   background-color: $dark;
   border: 1px solid rgba($green, 0.4);
-  border-radius: 0 10px 10px 0;
-  display: flex;
+  border-radius: 0 0 10px 10px;
   height: auto;
-
-  // for overlay effect
   position: relative;
+  padding-bottom: 1rem;
+  margin: em(5);
+
+  @include mq($mobile) {
+    margin: em(0);
+  }
+
+  @include mq($tablet) {
+    margin-bottom: 0;
+    display: block;
+    padding-bottom: 0;
+  }
 
   // Poster image
   .movie-poster {
     width: 100%;
   }
 
-  // Bsic movie info
+  // Basic movie info
   // movie title, release data, avg rate
   .movie-info {
     padding: em(10);
     width: 100%;
-  }
 
-  @include mq($tablet) {
-    margin-bottom: 0;
-    display: block;
-    border-radius: 0 0 10px 10px;
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.5rem 0;
+    }
+
+    .movie-rate {
+      letter-spacing: 1px;
+      vertical-align: middle;
+    }
   }
 
   .movie-info-overlay {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+
+    .movie-overview {
+      padding: em(10);
+
+      @include mq($tablet) {
+        padding: 1.5rem;
+      }
+    }
+
     @include mq($tablet) {
-      background-color: rgba($dark, 0.9);
+      background-color: rgba($dark, 0.85);
       margin: 0;
       position: absolute;
       top: 0;
       bottom: 0;
       transition: 0.6s ease-in-out;
-      height: em(310);
+      height: auto;
       opacity: 0;
       padding: 0;
 
       &:hover {
         opacity: 1;
+        -webkit-box-shadow: 0px 0px 13px -2px #2fe2d8;
+        box-shadow: 0px 0px 13px -2px #2fe2d8;
       }
     }
 
     p {
-      font-size: em(14);
-      @include mq($tablet) {
-        font-size: em(16);
-        padding: 2rem;
-      }
+      font-size: em(16);
+      line-height: 1.7;
     }
   }
 }

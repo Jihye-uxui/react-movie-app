@@ -1,22 +1,24 @@
 // Page Movie Detail
-
 import { useEffect, useState } from 'react';
-import { useLocation, useParams, Link } from 'react-router-dom';
-import useGlobal from '../store/globalAppState';
+import { useParams } from 'react-router-dom';
 import { appTitle, posterPath } from '../globals/globals';
+import useGlobal from '../store/globalAppState';
 import isFav from '../utilities/isFav';
 import noPoster from '../images/no-movie-poster.jpg';
 import FavButton from '../components/FavButton';
+import SvgStar from '../icons/SvgStar';
+import '../scss/components/_page-movie-info.scss';
 
 
-function PageMovieInfo( {movieObj, handleFavClick} ) {
+function PageMovieInfo() {
     const globalStateAndglobalActions = useGlobal();
     const globalState = globalStateAndglobalActions[0];
 
-    const dataFromRouterLink = useLocation();
     let { id } = useParams();
 
     const [movieInfoData, setMovieInfoData] = useState(null);
+    const [movieGenre, setMovieGenre] = useState([]);
+
 
     useEffect(() => {
         document.title = `${appTitle} - Movie Info: ${id}`
@@ -25,40 +27,59 @@ function PageMovieInfo( {movieObj, handleFavClick} ) {
 
             const movieData = await res.json();
             setMovieInfoData(movieData);
+            setMovieGenre(movieData.genres);
         }
         fetchMovieInfo();
 
     }, [id]);
 
     return (
+        <div className="wrapper">
             <section className="movie-info-page">
-            
-            {movieInfoData !== null &&
-            <div className="movie-info-detail">
                 
-                <FavButton movieObj={movieInfoData} remove={isFav(globalState.favs, null, movieInfoData.id)}/>
-                
-                <div className="movie-backdrop">
-                    {movieInfoData.poster_path === null ?
-                    <img src={noPoster} alt="no backdrop image"/> :
-                    <img src={posterPath + movieInfoData.backdrop_path} alt={movieInfoData.title}/>}
+                {movieInfoData !== null &&
+                <div className="movie-info-detail">
+                    
+                    {/* Movie Poster */}
+                    <div className="movie-poster">
+                        {movieInfoData.poster_path === null ?
+                        <img src={noPoster} alt="no poster"/> :
+                        <img src={posterPath + movieInfoData.poster_path} alt={movieInfoData.title}/>}
+                    </div>
+
+                    {/* Movie Main information */}
+                    <div className="movie-information">
+                        <div id="detail-fav">
+                            <FavButton movieObj={movieInfoData} remove={isFav(globalState.favs, null, movieInfoData.id)}/>
+                        </div>
+
+                        <h1>{movieInfoData.title}</h1>
+
+                        <div className="movie-details">
+                            <p className="movie-rate"><SvgStar/>{movieInfoData.vote_average}</p>
+                            <p>{movieInfoData.release_date}</p>
+                            <p>{movieInfoData.runtime}m</p>
+                        </div>
+
+                        <p className="movie-tagline">{movieInfoData.tagline}</p>
+
+                        <div className="overview-genre">
+                            <h3>Overview</h3>
+                            <p>{movieInfoData.overview}</p>
+
+                            <h3>Genre</h3>
+                            {movieGenre.map((genre, i) => {
+                                return (
+                                    <p className="movie-genres" key={i} id={genre.id}>{genre.name}</p>
+                                )
+                            })}
+                        </div>
+                    </div>
+
                 </div>
-                <div className="movie-poster">
-                    {movieInfoData.poster_path === null ?
-                    <img src={noPoster} alt="no poster"/> :
-                    <img src={posterPath + movieInfoData.poster_path} alt={movieInfoData.title}/>}
-                </div>
-                <h1>{movieInfoData.title}</h1>
-                <p>{movieInfoData.vote_average}</p>
-                <p>{movieInfoData.release_date}</p>
-                <p>{movieInfoData.runtime}</p>
-                <p>{movieInfoData.tagline}</p>
-                <p>{movieInfoData.overview}</p>
-                {/* <p>{movieInfoData.genres}</p> */}
-            </div>
-            }
-            
+                }
             </section>
+        </div>
     )
 }
 

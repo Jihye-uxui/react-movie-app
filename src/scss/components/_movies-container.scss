@@ -1,6 +1,5 @@
 // Home Page Gallery
 // Movie list - Popular, Top Rated..
-
 @use '../base/variables' as *;
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
@@ -15,8 +14,12 @@
     display: block;
   }
 
-  @include mq($tablet) {
+  @include mq($mobile) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq($tablet) {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @include mq($desktop) {

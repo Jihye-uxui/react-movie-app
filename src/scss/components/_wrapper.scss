@@ -1,13 +1,14 @@
 // Wrapper
-
 @use '../base/variables' as *;
 @use '../utilities/mixins' as *;
 @use '../utilities/functions' as *;
 
 .wrapper {
-  max-width: 1400px;
-  width: 95%;
-  background-color: $light;
+  max-width: 1300px;
+  padding: 0 1rem;
   @include mc();
-  background-color: $dark;
+
+  @include mq($tablet) {
+    padding: 0 1rem;
+  }
 }

@@ -1,5 +1,4 @@
 // Main Nav
-
 @use '../base/variables' as *;
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
@@ -11,70 +10,76 @@
   overflow: hidden;
   visibility: hidden;
 
-  .show & {
-    transition: height 0.5s ease, visibility 0s;
-    visibility: visible;
-    height: 254px;
-  }
-
   .active {
-    // border-bottom: 0.5rem solid darkcyan;
-    background-color: darkcyan;
+    color: $green;
   }
 
   ul {
     @include flatten($is-list: true);
-  }
 
-  a {
-    color: $light;
-    text-decoration: none;
-    display: block;
-    line-height: 50px;
-    font-size: 1.3em;
-    font-weight: bold;
-    padding: 0 12px;
-    @at-root .main-nav li:not(:first-child) a {
-      border-top: 1px solid $grey;
-    }
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: rgba(white, 0.2);
-      transition: height 0.5s ease, visibility 0s 0.5s;
+    a {
+      color: $light;
+      text-decoration: none;
+      display: block;
+      line-height: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+
+      @at-root .main-nav li:not(:first-child) a {
+        border-top: 1px solid $grey;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: rgba($green, 0.9);
+        transition: 0.3s ease-out;
+      }
     }
   }
-
-  // @include mq($tablet) {
-  //   width: 200px;
-  //   background-color: red;
-  // }
 
   @include mq($tablet) {
+    width: 70%;
     height: auto;
-    width: 50%;
     visibility: visible;
-
-    .show & {
-      transition: none;
-      height: auto;
-    }
 
     ul {
       display: flex;
-      li {
-        flex: 1;
+      justify-content: space-between;
+
+      li:last-child {
+        width: 50px;
+      }
+
+      a {
+        padding: 1rem;
+        text-align: center;
+        border-top: none;
+
+        @at-root .main-nav li:not(:first-child) a {
+          border-top: none;
+        }
+        @at-root .main-nav li:last-child a {
+          border-bottom: none;
+        }
       }
     }
 
-    a {
-      padding: 0;
-      text-align: center;
-      border-top: none;
-      @at-root .main-nav li:not(:first-child) a {
-        border-top: none;
-        // border-left: 3px solid $grey;
+    svg {
+      fill: $light;
+      vertical-align: middle;
+
+      &:hover,
+      &:focus,
+      &:active {
+        fill: $green;
+        width: 2rem;
+        transition: 0.3s ease-out;
       }
     }
+  }
+
+  @include mq($desktop) {
+    width: 50%;
   }
 }

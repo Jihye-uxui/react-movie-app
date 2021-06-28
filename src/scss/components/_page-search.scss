@@ -1,0 +1,19 @@
+// Search Page specification
+@use '../base/variables' as *;
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
+
+.search-page {
+  .movies-container {
+    padding-top: 2rem;
+  }
+  .user-input {
+    padding: 1rem 0;
+    display: flex;
+    color: $light;
+    font-size: 1.2rem;
+
+    @include mq($tablet) {
+    }
+  }
+}

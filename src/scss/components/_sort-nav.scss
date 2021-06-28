@@ -1,8 +1,21 @@
+// Sort Navigation bar
 @use '../base/variables' as *;
 @use '../utilities/functions' as *;
 @use '../utilities/mixins' as *;
 
 .nav-sort {
+  .active {
+    background-color: $green;
+    color: $dark;
+    font-weight: bold;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $dark;
+    }
+  }
+
   @include mq($desktopWide) {
     width: 50%;
   }
@@ -16,8 +29,7 @@
   }
 
   li {
-    padding: em(5);
-    margin-bottom: em(10);
+    padding: em(20) em(5);
 
     &:last-child {
       margin-right: none;
@@ -30,22 +42,21 @@
     font-size: em(14);
     color: $light;
     font-weight: 500;
-    border-bottom: 3px solid $dark;
-
-    @include mq($tablet) {
-      line-height: em(40);
-      font-size: em(16);
-    }
-
-    @include mq($desktopWide) {
-      font-size: em(18);
-    }
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid $grey;
 
     &:hover,
     &:focus,
     &:active {
-      color: rgba($green, 0.9);
-      border-bottom: 3px solid $green;
+      border: 1px solid $green;
+      color: $green;
+    }
+
+    @include mq($tablet) {
+      font-size: em(16);
+      padding: 1.2rem;
+      line-height: em(0);
     }
   }
 }

@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
+import { API_TOKEN } from '../globals/globals';
 import NavSort from '../components/NavSort';
 import Movies from '../components/Movies';
-import {API_TOKEN} from '../globals/globals';
+import HomeHero from '../components/HomeHero';
 
 function PageHome({ sort }) {
 
+    // Main section - 12 movie
     const [moviesData, setMoviesData] = useState(null);
+
+    // Hero section - 1 movie
+    const [movieData, setMovieData] = useState(null);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -20,6 +25,10 @@ function PageHome({ sort }) {
             // Show 12 movies from array of 20 movies...
             const first12Movies = moviesData.results.splice(0, 12);
             setMoviesData(first12Movies);
+
+            // Show the first movie in the Hero section
+            const firstMovie = moviesData.results.splice(0, 1);
+            setMovieData(firstMovie);
         }
     
         fetchMovies();
@@ -27,12 +36,13 @@ function PageHome({ sort }) {
     }, [sort]);
 
     return (
-        <div class="wrapper">
-            <section className="home-page">
-                <NavSort />
-                {/* Request loading bar / error messages here... */}
+        <div>
+            {movieData !== null && <HomeHero moviesData={movieData}/> }
+            {/* Request loading bar / error messages here... */}
+            <div className="wrapper">
+            <NavSort />
                 {moviesData !== null && <Movies moviesData={moviesData}/>}
-            </section>
+            </div>
         </div>
     )
 }

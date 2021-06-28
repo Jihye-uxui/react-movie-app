@@ -1,13 +1,16 @@
 // Main
-
 @use '../base/variables' as *;
 @use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
 
 main {
   background-color: $dark;
-  margin-top: 1.3rem;
 
-  // section {
-  //   padding-top: 1rem;
-  // }
+  @include mq($tablet) {
+    padding-top: 80px; // Desktop main navigation's height
+  }
+}
+
+.page-heading {
+  margin: 2rem 0;
 }

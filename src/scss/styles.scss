@@ -13,9 +13,13 @@
 @use './components/sort-nav';
 @use './components/main';
 @use './components/footer';
-@use './components/heart';
+@use './components/heart-icon';
 @use './components/movie-card';
 @use './components/movies-container';
+@use './components/movie-hero';
+@use './components/search';
+@use './components/star-icon';
+@use './components/speech-recognition';
 
 /// buttons
 @use './components/btn-main-nav';
@@ -26,6 +30,9 @@
 // Pages
 @use './components/page-favs';
 @use './components/page-about';
+@use './components/page-search';
+@use './components/page-movie-info';
+@use './components/page-not-found';
 
 // Utilities
 @use './utilities/utility-classes';

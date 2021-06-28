@@ -5,12 +5,7 @@
 @use '../utilities/functions' as *;
 
 footer {
-  // border-top: 1px dotted darken($grey, 20);
-  padding: 3rem 0 0;
-  // position: absolute;
-  // right: 0;
-  // left: 0;
-  // bottom: 0;
+  padding: 3rem 0 1rem;
 
   p {
     @include flatten;
@@ -19,7 +14,6 @@ footer {
     font-weight: 400;
     line-height: 1.3;
     color: grey;
-    // text-align: center;
   }
 
   div {
@@ -41,9 +35,10 @@ footer {
     .footer-contents {
       display: flex;
       justify-content: center;
+      align-items: center;
 
       .footer-logo img {
-        margin-bottom: 1rem;
+        margin-top: 1rem;
       }
 
       p {

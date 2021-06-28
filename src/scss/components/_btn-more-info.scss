@@ -1,3 +1,4 @@
+// More Information Button
 @use '../base/variables' as *;
 @use '../utilities/mixins' as *;
 @use '../utilities/functions' as *;
@@ -19,7 +20,7 @@
   }
   &:hover {
     background-color: $green;
-    transition: 0.6s ease-in-out;
+    transition: 0.3s ease-in-out;
     a {
       color: $dark;
     }

@@ -1,0 +1,71 @@
+// Search Text Input Form
+@use '../base/variables' as *;
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
+
+form {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  border: 1px solid $green;
+
+  @include mq($tablet) {
+    margin: 5rem 0 2rem;
+    font-size: 1rem;
+    max-width: 80%;
+    @include mc();
+    display: flex;
+  }
+
+  .input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: em(5) 0 0 em(5);
+    line-height: 1.5rem;
+    padding-left: 1rem;
+    background-color: $light;
+    border: none;
+  }
+
+  button {
+    &:hover,
+    &:focus,
+    &:active {
+      cursor: pointer;
+    }
+  }
+  .record-btn {
+    width: 80px;
+    border: none;
+    background-color: $light;
+  }
+
+  .submit-btn {
+    width: 150px;
+    line-height: 1.5rem;
+    border: none;
+    background-color: $darkViolet;
+    cursor: pointer;
+    color: $light;
+    border-radius: 0 em(5) em(5) 0;
+    transition: background-color 250ms;
+    font-size: 1rem;
+
+    svg {
+      height: 1.3rem;
+      vertical-align: middle;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $green;
+      svg {
+        fill: $dark;
+      }
+    }
+  }
+}

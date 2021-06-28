@@ -1,28 +1,25 @@
 // App Style Settings
-
 @use '../utilities/functions' as *;
 
 // Colors
 $dark: #040206;
-$grey: red;
+$grey: #727272;
 $light: #ebebeb;
 $green: #2fe2d8;
 $violet: #795edd;
 $darkViolet: #110a21;
-//
-$yellow: #f7df1c;
-$grey: #e1e1e1;
-$red: #d75b5b;
+$yellow: #f7b21c;
+$lightgrey: #e1e1e1;
 
 // Type
 $bodyFont: "Montserrat", sans-serif;
-//
 $headingFont: "Montserrat", sans-serif;
 
 // Layout
 $section-padding: em(5) em(5);
 
 // Breakpoints
-$tablet: 580;
-$desktop: 820;
-$desktopWide: 1000;
+$mobile: 440;
+$tablet: 680;
+$desktop: 900;
+$desktopWide: 1200;
